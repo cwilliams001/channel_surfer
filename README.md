@@ -43,7 +43,7 @@ After selecting an endpoint, you can perform the following actions:
 
 ## Configuration
 
-The script stores endpoint configurations in a JSON file named `endpoints.json` in the same directory as the script. This file is automatically created and updated as you add or remove endpoints.
+The script stores endpoint configurations in a JSON file named `endpoints.json` in the `.channel_surfer` directory within the user's home folder. This file is automatically created and updated as you add or remove endpoints. The configuration file location is consistent regardless of where you run the script from.
 
 ## Notes
 

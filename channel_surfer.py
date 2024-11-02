@@ -4,6 +4,7 @@ import json
 import time
 import os
 from requests.exceptions import RequestException
+from pathlib import Path
 
 # ANSI color codes
 class Colors:
@@ -15,9 +16,16 @@ class Colors:
     CYAN = '\033[0;36m'
     NC = '\033[0m'  # No Color
 
+def get_config_file_path():
+    home_dir = Path.home()
+    config_dir = home_dir / ".channel_surfer"
+    config_dir.mkdir(exist_ok=True)
+    return config_dir / "endpoints.json"
+
 def load_endpoints():
+    config_file = get_config_file_path()
     try:
-        with open('endpoints.json', 'r') as f:
+        with open(config_file, 'r') as f:
             return json.load(f)
     except FileNotFoundError:
         print(f"{Colors.YELLOW}Endpoints configuration file not found. Starting with an empty list.{Colors.NC}")
@@ -27,7 +35,8 @@ def load_endpoints():
         return []
 
 def save_endpoints(endpoints):
-    with open('endpoints.json', 'w') as f:
+    config_file = get_config_file_path()
+    with open(config_file, 'w') as f:
         json.dump(endpoints, f, indent=2)
 
 def add_endpoint():
