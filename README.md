@@ -19,7 +19,7 @@ Channel Surfer is a Python script that allows you to manage multiple Kismet endp
 Run the script using Python:
 
 ```bash
-python3 channel_surfer_2.0.py
+python3 channel_surfer.py
 ```
 
 ### Main Menu
