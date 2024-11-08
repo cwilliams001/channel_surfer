@@ -41,7 +41,7 @@ def save_endpoints(endpoints):
 
 def add_endpoint():
     name = input(f"{Colors.YELLOW}Enter endpoint name: {Colors.NC}")
-    url = input(f"{Colors.YELLOW}Enter endpoint URL: {Colors.NC}")
+    url = input(f"{Colors.YELLOW}Enter endpoint URL (http://<ip>:<port>): {Colors.NC}")
     type = input(f"{Colors.YELLOW}Enter endpoint type (e.g., local, vpn): {Colors.NC}")
     user = input(f"{Colors.YELLOW}Enter Kismet username: {Colors.NC}")
     password = input(f"{Colors.YELLOW}Enter Kismet password: {Colors.NC}")
