@@ -12,7 +12,24 @@ Channel Surfer is a Python script that allows you to manage multiple Kismet endp
 - Supports 2.4GHz, 5GHz, and dual-band hopping
 - Persistent storage of endpoint configurations
 
+## Installation
 
+You can install Channel Surfer in several ways:
+
+### Via PyPI
+Install directly using pip:
+
+```bash
+pip install channel-surfer
+```
+
+### Using pipx (Recommended)
+
+For an isolated installation that avoids conflicts with your system Python, use pipx:
+
+```bash
+pipx install channel-surfer
+```
 
 ## Usage
 
