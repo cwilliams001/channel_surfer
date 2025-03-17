@@ -56,7 +56,11 @@ After selecting an endpoint, you can perform the following actions:
    - 5GHz
    - Both 2.4GHz and 5GHz
 3. **Set device to hop between two channels**: Configure a Wi-Fi adapter to hop between two specific channels.
-4. **Back to endpoint selection**: Return to the endpoint selection menu.
+4. **Set device to efficient channels hopping**: Configure a Wi-Fi adapter to hop between non-overlapping channels.
+   - 2.4GHz efficient channels (1,6,11)
+   - 5GHz efficient channels (36,40,44,48,149,153,157,161)
+   - Both 2.4GHz and 5GHz efficient channels
+5. **Back to endpoint selection**: Return to the endpoint selection menu.
 
 ## Configuration
 

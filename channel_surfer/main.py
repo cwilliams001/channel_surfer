@@ -185,9 +185,10 @@ def handle_endpoint_actions(selected_endpoint: dict) -> None:
         console.print("[magenta]1.[/magenta] Lock channel for a device")
         console.print("[magenta]2.[/magenta] Set device to hopping mode")
         console.print("[magenta]3.[/magenta] Set device to hop between two channels")
-        console.print("[magenta]4.[/magenta] Back to endpoint selection")
-        choice = Prompt.ask("[yellow]Enter your choice (1-4)[/yellow]")
-        if choice in ['1', '2', '3']:
+        console.print("[magenta]4.[/magenta] Set device to efficient channels hopping")
+        console.print("[magenta]5.[/magenta] Back to endpoint selection")
+        choice = Prompt.ask("[yellow]Enter your choice (1-5)[/yellow]")
+        if choice in ['1', '2', '3', '4']:
             selected_device = select_device(sources)
             uuid = selected_device.get("kismet.datasource.uuid")
             interface = selected_device.get("kismet.datasource.interface", "N/A")
@@ -211,10 +212,25 @@ def handle_endpoint_actions(selected_endpoint: dict) -> None:
                 channel2 = Prompt.ask(f"[yellow]Enter the second channel to hop for {interface}[/yellow]")
                 channels = [channel1, channel2]
                 set_hopping(selected_endpoint, uuid, 6, channels, interface)
-        elif choice == '4':
+            elif choice == '4':
+                console.print("[yellow]Choose efficient channel option:[/yellow]")
+                console.print("[magenta]1.[/magenta] 2.4GHz (channels 1,6,11)")
+                console.print("[magenta]2.[/magenta] 5GHz (channels 36,40,44,48,149,153,157,161)")
+                console.print("[magenta]3.[/magenta] Both 2.4GHz and 5GHz (all efficient channels)")
+                eff_choice = Prompt.ask("[yellow]Enter your choice (1-3)[/yellow]")
+                channels = {
+                    '1': "1,6,11",
+                    '2': "36,40,44,48,149,153,157,161",
+                    '3': "1,6,11,36,40,44,48,149,153,157,161"
+                }.get(eff_choice, "")
+                if channels:
+                    set_hopping(selected_endpoint, uuid, 5, channels, interface)
+                else:
+                    console.print("[red]Invalid choice for efficient channels. Returning to device selection.[/red]")
+        elif choice == '5':
             break
         else:
-            console.print("[red]Invalid choice. Please enter a number between 1 and 4.[/red]")
+            console.print("[red]Invalid choice. Please enter a number between 1 and 5.[/red]")
         Prompt.ask("[cyan]Press Enter to continue...[/cyan]", default="")
 
 def select_endpoint(endpoints: list) -> None:
