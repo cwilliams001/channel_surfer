@@ -1,7 +1,6 @@
-
 # Channel Surfer
 
-Channel Surfer is a Python script that allows you to manage multiple Kismet endpoints and control Wi-Fi adapters connected to those endpoints. It provides an interactive command-line interface for adding, removing, and interacting with Kismet endpoints.
+Channel Surfer is a Python tool that allows you to manage multiple Kismet endpoints and control Wi-Fi adapters connected to those endpoints. It provides an interactive command-line interface for adding, removing, and interacting with Kismet's API to control wireless adapter settings.
 
 ## Features
 
@@ -11,6 +10,12 @@ Channel Surfer is a Python script that allows you to manage multiple Kismet endp
 - Set Wi-Fi adapters to various hopping modes
 - Supports 2.4GHz, 5GHz, and dual-band hopping
 - Persistent storage of endpoint configurations
+- Efficient channel hopping for optimized scanning
+
+## Requirements
+
+- Python 3.6 or higher
+- Kismet server(s) with API access
 
 ## Installation
 
@@ -33,10 +38,16 @@ pipx install channel-surfer
 
 ## Usage
 
-Run the script using Python:
+After installation, simply run:
 
 ```bash
-python3 channel_surfer.py
+channel-surfer
+```
+
+If installing directly from the repository:
+
+```bash
+python -m channel_surfer.main
 ```
 
 ### Main Menu
@@ -64,9 +75,29 @@ After selecting an endpoint, you can perform the following actions:
 
 ## Configuration
 
-The script stores endpoint configurations in a JSON file named `endpoints.json` in the `.channel_surfer` directory within the user's home folder. This file is automatically created and updated as you add or remove endpoints. The configuration file location is consistent regardless of where you run the script from.
+The tool stores endpoint configurations in a JSON file named `endpoints.json` in the `.channel_surfer` directory within the user's home folder. This file is automatically created and updated as you add or remove endpoints. The configuration file location is consistent regardless of where you run the tool from.
+
+## Troubleshooting
+
+- **Connection issues**: Ensure your Kismet server is running and accessible from your network.
+- **Authentication failures**: Verify your Kismet username and password are correct.
+- **No devices shown**: Make sure your Wi-Fi adapters are properly connected and recognized by Kismet.
+- **Permission issues**: The tool requires appropriate permissions to interact with the Kismet API.
+
+## Developer Setup
+
+To set up a development environment:
+
+1. Clone the repository
+2. Create a virtual environment: `python -m venv venv`
+3. Activate the environment: `source venv/bin/activate` (Linux/Mac) or `venv\Scripts\activate` (Windows)
+4. Install dependencies: `pip install -e .`
+
+## License
+
+This project is licensed under the MIT License - see the project repository for details.
 
 ## Notes
 
 - Ensure that you have the necessary permissions to interact with the Kismet API on the specified endpoints.
-- The script uses ANSI color codes for a more user-friendly interface. Make sure your terminal supports ANSI colors for the best experience.
+- The tool uses ANSI color codes through the Rich library for a more user-friendly interface.
